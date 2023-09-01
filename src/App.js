@@ -7,12 +7,18 @@ import Footer from './Components/Footer';
 import PrivacyPolicy from './Components/PrivacyPolicy';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Features from './Components/Features';
+import FileUpload from './Components/FileUpload';
+import PdfToWordConverter from './Components/tools/pdftoword';
+import PdfToExcelConverter from './Components/tools/pdftoexcel';
+import PdfToJpgConverter from './Components/tools/pdftojpg';
+import DeletePdfPages from './Components/tools/delpdfpages';
+
 function App() {
   return (
     <>
     
-    <div className='Home'>
-      <BrowserRouter>
+     <div className='Home'>
+      {/* <BrowserRouter>
       <Navbar/><br/><br/><br/>
       <Routes>
         <Route path='/about-us' element={<About/>}/>
@@ -22,8 +28,16 @@ function App() {
         <Route path="/features" element={<Features/>}/>
       </Routes>
       <Footer/>
-      </BrowserRouter>
+      </BrowserRouter>  */}
       
+    </div> 
+    <div className="App">
+      <h1>PDF Merge Tool</h1>
+      {/* <PdfToWordConverter /> */}
+      {/* <PdfToExcelConverter/> */}
+      {/* <PdfToJpgConverter/> */}
+      <DeletePdfPages/>
+
     </div>
     </>
   );
