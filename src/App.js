@@ -7,18 +7,28 @@ import Footer from './Components/Footer';
 import PrivacyPolicy from './Components/PrivacyPolicy';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Features from './Components/Features';
-import FileUpload from './Components/FileUpload';
+import Pdftotext from './Components/Pdftotext';
 import PdfToWordConverter from './Components/tools/pdftoword';
 import PdfToExcelConverter from './Components/tools/pdftoexcel';
-import PdfToJpgConverter from './Components/tools/pdftojpg';
+import ExcelToPdfConverter from './Components/tools/exceltopdf';
 import DeletePdfPages from './Components/tools/delpdfpages';
+import HtmlToPdfConverter from './Components/tools/htmltopdf';
+import WordToPdfConverter from './Components/tools/wordtopdf';
+import PdfPageSizeChanger from './Components/tools/resizepdf';
+import PdfMerger from './Components/tools/mergepdf';
+import PdfSplitter from './Components/tools/splitpdf';
+import PdfToJpgConverter from './Components/tools/rotatepdf';
+import PdfToHtmlConverter from './Components/tools/watermarkpdf';
+import WatermarkPdfTool from './Components/tools/watermarkpdf';
+import PageNumberTool from './Components/tools/pagenumber';
+import PdfSignatureTool from './Components/tools/addSign';
 
 function App() {
   return (
     <>
     
      <div className='Home'>
-      {/* <BrowserRouter>
+       {/* <BrowserRouter>
       <Navbar/><br/><br/><br/>
       <Routes>
         <Route path='/about-us' element={<About/>}/>
@@ -28,17 +38,25 @@ function App() {
         <Route path="/features" element={<Features/>}/>
       </Routes>
       <Footer/>
-      </BrowserRouter>  */}
-      
+      </BrowserRouter>   */}
+       
     </div> 
-    <div className="App">
-      <h1>PDF Merge Tool</h1>
-      {/* <PdfToWordConverter /> */}
+     <div className="App"> 
+      <h1>PDF Merge Tool</h1> 
+      {/* <PdfToWordConverter />  */}
       {/* <PdfToExcelConverter/> */}
       {/* <PdfToJpgConverter/> */}
-      <DeletePdfPages/>
+      {/* <DeletePdfPages/> */}
+      {/* <ExcelToPdfConverter/> */}
+      {/* <PdfPageSizeChanger/> */}
+      {/* <PdfMerger/> */}
+      {/* <PdfSplitter/> */}
+      {/* <PdfToJpgConverter/> */}
+      {/* <WatermarkPdfTool/> */}
+      {/* <PageNumberTool/> */}
+      <PdfSignatureTool/>
 
-    </div>
+     </div>
     </>
   );
 }
