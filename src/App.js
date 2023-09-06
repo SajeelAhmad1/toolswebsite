@@ -9,7 +9,6 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Features from './Components/Features';
 import Pdftotext from './Components/Pdftotext';
 import PdfToWordConverter from './Components/tools/pdftoword';
-import PdfToExcelConverter from './Components/tools/pdftoexcel';
 import ExcelToPdfConverter from './Components/tools/exceltopdf';
 import DeletePdfPages from './Components/tools/delpdfpages';
 import HtmlToPdfConverter from './Components/tools/htmltopdf';
@@ -17,11 +16,20 @@ import WordToPdfConverter from './Components/tools/wordtopdf';
 import PdfPageSizeChanger from './Components/tools/resizepdf';
 import PdfMerger from './Components/tools/mergepdf';
 import PdfSplitter from './Components/tools/splitpdf';
-import PdfToJpgConverter from './Components/tools/rotatepdf';
-import PdfToHtmlConverter from './Components/tools/watermarkpdf';
+// import PdfToJpgConverter from './Components/tools/rotatepdf';
+// import PdfToHtmlConverter from './Components/tools/watermarkpdf';
 import WatermarkPdfTool from './Components/tools/watermarkpdf';
 import PageNumberTool from './Components/tools/pagenumber';
 import PdfSignatureTool from './Components/tools/addSign';
+import AddHeaderFooterToPDF from './Components/tools/addheaderfooter';
+import JpgToPdfConverter from './Components/tools/jpg topdf';
+import PdfToJpgConverter from './Components/tools/pdftojpg';
+import PdfToHtmlConverter from './Components/tools/pdftohtml';
+import PdfCompressor from './Components/tools/compresspdf';
+import PdfToPowerpointConverter from './Components/tools/pdftoppt';
+import PowerPointToPdfConverter from './Components/tools/ppttopdf';
+import PdfPageOrganizer from './Components/tools/organizepdf';
+import PdfToExcelConverter from './Components/tools/pdftoexcel1';
 
 function App() {
   return (
@@ -54,7 +62,17 @@ function App() {
       {/* <PdfToJpgConverter/> */}
       {/* <WatermarkPdfTool/> */}
       {/* <PageNumberTool/> */}
-      <PdfSignatureTool/>
+      {/* <PdfSignatureTool/> */}
+      {/* <AddHeaderFooterToPDF/> */}
+      {/* <JpgToPdfConverter/> */}
+      {/* <PdfToJpgConverter/> */}
+      {/* <PdfToHtmlConverter/> */}
+      {/* <PdfCompressor/> */}
+      {/* <PdfToPowerpointConverter /> */}
+      {/* <PowerPointToPdfConverter/> */}
+      {/* <PdfPageOrganizer /> */}
+      <PdfToExcelConverter />
+
 
      </div>
     </>
