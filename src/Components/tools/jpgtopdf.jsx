@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { saveAs } from 'file-saver';
 import { PDFDocument, rgb } from 'pdf-lib';
 import { useDropzone } from 'react-dropzone';
+import "./tools.css"
 
 function JpgToPdfConverter() {
   const [pdf, setPdf] = useState(null);
@@ -45,7 +46,8 @@ function JpgToPdfConverter() {
 
   return (
     <div className="jpg-to-pdf-converter">
-      <h1>JPG to PDF Converter</h1>
+      <h1 className='first-heading'>JPG to PDF Converter</h1>
+      <p>Convert JPG, PNG, BMP, TIFF & GIF into a PDF document. You easily change the orientation, margins and paper size.</p>
       <div {...getRootProps()} style={dropzoneStyle}>
         <input {...getInputProps()} />
         <p>Drag & drop JPG images here or click to select files</p>

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { pdfjs } from 'react-pdf';
+import "./tools.css"
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+// Import the worker from the pdfjs-dist package
+import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.entry';
+
+// Set the worker source for pdfjs
+pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 function PdfToHtmlConverter() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -9,54 +14,56 @@ function PdfToHtmlConverter() {
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
+
     if (file) {
-      setPdfFile(file);
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setHtmlContent(event.target.result);
+      };
+      reader.readAsText(file);
     }
   };
 
-  const convertPdfToHtml = async () => {
+  const convertPdfToHtml = () => {
     if (!pdfFile) {
       alert('Please upload a PDF file first.');
       return;
     }
 
-    try {
-      const pdfBytes = await fetch(URL.createObjectURL(pdfFile)).then((res) =>
-        res.arrayBuffer()
-      );
+    const doc = new pdfjs.getDocument(pdfFile);
 
-      const pdfDoc = await pdfjs.getDocument({ data: pdfBytes }).promise;
-      const numPages = pdfDoc.numPages;
+    doc.promise.then(function (pdfDoc_) {
+      var pdfDoc = pdfDoc_;
+      var numPages = pdfDoc.numPages;
+      var i = 1;
+      pdfDoc.getPage(i).then(function (page) {
+        // Create a canvas element to render the PDF page
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
 
-      let html = '';
+        // Set the canvas size to match the PDF page
+        canvas.width = page.view[2];
+        canvas.height = page.view[3];
 
-      for (let pageNumber = 1; pageNumber <= numPages; pageNumber++) {
-        const pdfPage = await pdfDoc.getPage(pageNumber);
-        const viewport = pdfPage.getViewport({ scale: 1 });
+        // Render the PDF page into the canvas context
+        var renderContext = {
+          canvasContext: context,
+          viewport: page.view,
+        };
+        page.render(renderContext).promise.then(function () {
+          // Convert the canvas to HTML
+          var html = `<div class="pdf-page" style="width: ${canvas.width}px;">`;
+          html += `<img src="${canvas.toDataURL()}" alt="Page ${i}" />`;
+          html += `</div>`;
 
-        const canvas = document.createElement('canvas');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        const context = canvas.getContext('2d');
+          // Append the HTML content
+          setHtmlContent(html);
 
-        await pdfPage.render({ canvasContext: context, viewport }).promise;
-
-        const imageDataUri = canvas.toDataURL('image/png');
-
-        // Convert each page to HTML with an image tag and styling
-        html += `<div class="pdf-page" style="width: ${viewport.width}px;">`;
-        html += `<img src="${imageDataUri}" alt="Page ${pageNumber}" />`;
-        html += `</div>`;
-      }
-
-      // Wrap the generated HTML in a container with width settings
-      const fullHtml = `<div style="width: 100%;">${html}</div>`;
-      setHtmlContent(fullHtml);
-      downloadHtmlFile(fullHtml);
-    } catch (error) {
-      console.error('Error converting PDF to HTML:', error);
-      alert('An error occurred while converting PDF to HTML.');
-    }
+          // Download the HTML content as a file
+          downloadHtmlFile(html);
+        });
+      });
+    });
   };
 
   const downloadHtmlFile = (html) => {
@@ -70,14 +77,28 @@ function PdfToHtmlConverter() {
   };
 
   return (
-    <div className="pdf-to-html-converter">
-      <h1>PDF to HTML Converter</h1>
-      <input type="file" accept=".pdf" onChange={handleFileUpload} />
+    <div className="body">
+      <h1 className='first-heading'>PDF to HTML Converter</h1>
+      <p>Convert your PDF files to HTML using PDFClear in one click.</p>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
+<div className="download-btn">
+      <input type="file" accept=".pdf" onChange={handleFileUpload} /></div>
+      <div className="merge-btn">
       <button onClick={convertPdfToHtml}>Convert PDF to HTML</button>
-      {/* <div
+      </div>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
+      <div
         className="html-content"
         dangerouslySetInnerHTML={{ __html: htmlContent }}
-      ></div> */}
+      ></div>
     </div>
   );
 }

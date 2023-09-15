@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { pdfjs } from 'react-pdf';
 import { saveAs } from 'file-saver';
+import "./tools.css"
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -67,10 +68,23 @@ function PdfToJpgConverter() {
   };
 
   return (
-    <div className="pdf-to-jpg-converter">
-      <h1>PDF to JPG Converter</h1>
-      <input type="file" accept=".pdf" onChange={handleFileUpload} />
-      <button onClick={convertPdfToJpg}>Convert PDF to JPG</button>
+    <div className="body">
+      <h1 className='first-heading'>PDF to JPG Converter</h1>
+      <p>Extract all images from a PDF document or extract each page as a separate JPG image easily.</p>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
+<div className="download-btn">
+      <input type="file" accept=".pdf" onChange={handleFileUpload} /></div>
+      <div className="merge-btn">
+      <button onClick={convertPdfToJpg}>Convert PDF to JPG</button></div>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
     </div>
   );
 }

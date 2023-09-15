@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
+import "./tools.css"
 
 function PdfSplitter() {
   const [pdf, setPdf] = useState(null);
@@ -54,21 +55,38 @@ function PdfSplitter() {
   };
 
   return (
-    <div>
-      <h2>PDF Splitter</h2>
-      <input type="file" accept=".pdf" onChange={handleFileChange} />
+    <div className='body'>
+      <h2 className='first-heading'>PDF Splitter</h2>
+      <p>Extract pages from your PDF file or save a set of PDF pages easily. </p>
+      {/* ad area */}
+      <div className='ad-area'>
+
+      </div>
+      {/* ad area */}
+      <div class="download-btn" onChange={handleFileChange} >
+      <input type="file" accept=".pdf"  /></div>
+      <div style={{fontSize:'20px', width:'20%', marginLeft:'39%', marginBottom:'2%'}}>
       <input
+      style={{padding:'5px', borderRadius:'4px', border:'1px solid black', width:'100%', marginLeft:'5%'}}
         type="text"
-        placeholder="Enter page ranges (e.g., 1-3, 5-7)"
+        placeholder="Page ranges (1-3)"
         onChange={(e) => setSplitPages(e.target.value)}
       />
-      <button onClick={splitPdf}>Split PDF</button>
+  </div>
+  
+
+      <div className="merge-btn"><button onClick={splitPdf}>Split PDF</button></div>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
       {outputPdfUrls.length > 0 && (
         <div>
-          <h3>Split PDFs:</h3>
+          {/* <span>Download</span> */}
           {outputPdfUrls.map((url, index) => (
-            <div key={index}>
-              <a href={url} download={`split_${index + 1}.pdf`}>
+            <div key={index} className="merge-btn" style={{marginBottom:'3%'}}>
+              <a href={url} download={`split_${index + 1}.pdf`} style={{color:"white"}}>
                 Download Split {index + 1}
               </a>
             </div>

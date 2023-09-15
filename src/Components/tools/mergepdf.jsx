@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument, rgb } from 'pdf-lib';
+import "./tools.css"
 
 function PdfMerger() {
   const [pdfs, setPdfs] = useState([]);
@@ -33,13 +34,48 @@ function PdfMerger() {
   };
 
   return (
-    <div>
-      <h2>PDF Merger</h2>
-      <input type="file" accept=".pdf" multiple onChange={handleFileChange} />
-      <button onClick={mergePdfs}>Merge PDFs</button>
+    <div className='body'>
+      <h1 className='first-heading'>PDF Merger</h1>
+      <p>Combine your multiple PDFs files into one PDFs document free in just few seconds.</p>
+
+
+      {/* ad area */}
+      <div className='ad-area'>
+
+      </div>
+      {/* ad area */}
+      {/* <div className="download-btn" onChange={handleFileChange} >
+      <input type="file" accept=".pdf" multiple /></div> */}
+
+
+
+      <div class="download-btn" onChange={handleFileChange}>
+        <input type="file" accept=".pdf" multiple/>
+        <label for="fileInput" class="file-label">
+            
+            
+        </label>
+    </div>
+
+
+
+    {/* <br /> */}
+
+<div className='merge-btn' onClick={mergePdfs}>
+      <button >Merge PDFs</button>
+      </div>
+
+
+      {/* ad area */}
+      <div className='ad-area'>
+
+      </div>
+      {/* ad area */}
+
+
       {mergedPdf && (
-        <div>
-          <a href={mergedPdf} download="merged.pdf">
+        <div className='download-btn'>
+          <a href={mergedPdf} download="merged.pdf" style={{color:'white'}}>
             Download Merged PDF
           </a>
         </div>

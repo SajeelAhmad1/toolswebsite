@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { read, utils } from 'xlsx';
 import jsPDF from 'jspdf';
+import "./tools.css"
 
 function ExcelToPdfConverter() {
   const [excelFile, setExcelFile] = useState(null);
@@ -32,10 +33,23 @@ function ExcelToPdfConverter() {
   };
 
   return (
-    <div>
-      <h2>Excel to PDF Converter</h2>
-      <input type="file" accept=".xlsx" onChange={handleFileChange} />
-      <button onClick={convertToPdf}>Convert to PDF</button>
+    <div className='body'>
+      <h2 className='first-heading'>Excel to PDF Converter</h2>
+      <p>Make a PDF file easily form XLS & XLSX spreadsheets within few clicks.</p>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
+<div className="download-btn">
+      <input type="file" accept=".xlsx" onChange={handleFileChange} /></div>
+      <div className="merge-btn">
+      <button onClick={convertToPdf}>Convert to PDF</button></div>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
     </div>
   );
 }

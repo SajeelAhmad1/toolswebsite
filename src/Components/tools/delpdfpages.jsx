@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
+import "./tools.css"
 
 function DeletePdfPages() {
   const fileInputRef = useRef(null);
@@ -66,7 +67,8 @@ function DeletePdfPages() {
 
   return (
     <div>
-      <h2>Delete PDF Pages</h2>
+      <h2 className='first-heading'>Delete PDF Pages</h2>
+      <p>Remove one or multiple PDF pages you don’t need easily and get net PDF file without deleted pages.</p>
       <label>Enter Page Index to Delete: </label>
       <input type="number" ref={pageIndexInputRef} />
       <input type="file" accept=".pdf" ref={fileInputRef} />

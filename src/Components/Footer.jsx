@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <footer
-        style={{ backgroundColor: "#f6f6f8" }}
+        style={{ backgroundColor: "#f6f6f8", paddingTop:'100px', paddingBottom:'100px' }}
         className="px-4 py-10 text-black flex flex-col md:flex-row justify-between gap-10 md:gap-4 border-t-2"
       >
         <div className="flex flex-col justify-center items-center w-full md:w-1/5">
@@ -25,35 +25,35 @@ const Footer = () => {
         </div>
         <div className="flex justify-center gap-32 w-full md:w-1/2">
           <div className="text-gray-600">
-            <h2 className="text-black text-2xl">Quick Links</h2>
-            <div className="flex flex-col">
-              <Link to="/" className="hover:text-black">
-                Home
+            <h2 className="text-black text-2xl"style = {{color:'#e5322d'}}>Quick Links</h2>
+            <div className="flex flex-col"><br />
+              <Link to="/" className="hover:text-black" style={{paddingBottom:'4px'}}>
+                PDF to Text
               </Link>
-              <Link to="/tutorials/Chapter1" className="hover:text-black">
-                Tutorials
+              <Link to="/tutorials/Chapter1" className="hover:text-black" style={{paddingBottom:'4px'}}>
+                PDF to Word
               </Link>
-              <Link to="/quizes/quiz1" className="hover:text-black">
-                Quiz
+              <Link to="/quizes/quiz1" className="hover:text-black" style={{paddingBottom:'4px'}}>
+                PDF to Power Point
               </Link>
-              <Link to="/cppatglance" className="hover:text-black">
-                C++ at Glance
+              <Link to="/cppatglance" className="hover:text-black" style={{paddingBottom:'4px'}}>
+                Merge PDFs
               </Link>
             </div>
           </div>
           <div className="text-gray-600">
-            <h2 className="text-black text-2xl">Help</h2>
-            <div className="flex flex-col">
-              <Link to="/about-us" className="hover:text-black">
+            <h2 className="text-black text-2xl"style = {{color:'#e5322d'}}>Help</h2>
+            <div className="flex flex-col"><br />
+              <Link to="/about-us" className="hover:text-black" style={{paddingBottom:'4px'}}>
                 About
               </Link>
-              <Link to="/contact-us" className="hover:text-black">
+              <Link to="/contact-us" className="hover:text-black" style={{paddingBottom:'4px'}}>
                 Contact
               </Link>
-              <Link to="/privacy-policy" className="hover:text-black">
+              <Link to="/privacy-policy" className="hover:text-black" style={{paddingBottom:'4px'}}>
                 Privacy Policy
               </Link>
-              <Link to="/features" className="hover:text-black">
+              <Link to="/features" className="hover:text-black" style={{paddingBottom:'4px'}}>
                 Features
               </Link>
             </div>

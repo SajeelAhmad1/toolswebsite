@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { saveAs } from 'file-saver';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import "./tools.css"
 
 const fontStyles = [
   'Helvetica',
@@ -159,7 +160,8 @@ function AddHeaderFooterToPDF() {
 
   return (
     <div className="add-header-footer-to-pdf">
-      <h1>Add Header and Footer to PDF</h1>
+      <h1 className='first-heading'>Add Header and Footer to PDF</h1>
+      <p>Add header and footer on all PDF pages online, free and easy.</p>
       <input type="file" accept=".pdf" onChange={handleFileUpload} />
       <div>
         <label htmlFor="headerText">Header Text:</label>

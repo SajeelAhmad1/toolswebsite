@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
+import "./tools.css"
 
 function PdfToExcelConverter() {
   const [pdfText, setPdfText] = useState('');
@@ -62,13 +63,25 @@ function PdfToExcelConverter() {
   };
 
   return (
-    <div>
-      <h2>PDF to Excel Converter</h2>
-      <input type="file" accept=".pdf" onChange={handleFileChange} />
+    <div className='body'>
+      <h2 className='first-heading'>PDF to Excel Converter</h2>
+      <p>Convert your PDFs file into a Microsoft Excel or XLS spreadsheets.</p>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
+<div className='download-btn'>
+      <input type="file" accept=".pdf" onChange={handleFileChange} /></div>
       {isLoading && <p>Converting...</p>}
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
       {pdfText && (
-        <div>
-          <h3>Extracted Text:</h3>
+        <div className='merge-btn'>
+          
           <button onClick={handleDownload}>Download Excel File</button>
         </div>
       )}

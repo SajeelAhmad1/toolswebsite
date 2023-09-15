@@ -1,5 +1,6 @@
 // src/components/PdfToTextConverter.js
 import React, { useState } from 'react';
+import "./tools.css"
 
 function PdfToTextConverter() {
   const [pdfText, setPdfText] = useState('');
@@ -49,7 +50,8 @@ function PdfToTextConverter() {
   };
   return (
     <div>
-      <h2>PDF to Text Converter</h2>
+      <h2 className='first-heading'>PDF to Text Converter</h2>
+      <p>Convert PDF to text using PDFClear and edit test easily.</p>
       <input type="file" accept=".pdf" onChange={handleFileChange} />
       {isLoading && <p>Converting...</p>}
       {pdfText && (

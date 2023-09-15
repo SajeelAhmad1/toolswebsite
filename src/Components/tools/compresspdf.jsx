@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
+import "./tools.css"
 
 const PdfCompressor = () => {
   const [pdfFile, setPdfFile] = useState(null);
@@ -41,11 +42,26 @@ const PdfCompressor = () => {
   };
 
   return (
-    <div>
-      <h2>PDF Compressor</h2>
+    <div className="body">
+      <h2 className='first-heading'>PDF Compressor</h2>
+      <p>Reduce your PDF file size without losing quality.</p>
+      {/* ad area */}
+      <div className='ad-area'>
+
+      </div>
+      {/* ad area */}
+      <div className="download-btn">
       <input type="file" accept=".pdf" onChange={handleFileChange} />
+      </div>
       <br />
+      <div className="merge-btn">
       <button onClick={compressPdf}>Compress PDF</button>
+      </div>
+      {/* ad area */}
+      <div className='ad-area'>
+
+      </div>
+      {/* ad area */}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
+import "./tools.css"
 
 function WordToPdfConverter() {
   const fileInputRef = useRef(null);
@@ -58,12 +59,25 @@ function WordToPdfConverter() {
   };
 
   return (
-    <div>
-      <h2>Word to PDF Converter</h2>
-      <input type="file" accept=".docx" ref={fileInputRef} />
+    <div className='body'>
+      <h2 className='first-heading'>Word to PDF Converter</h2>
+      <p>Make a PDF file easily form DOC & DOCX document within few clicks.</p>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
+<div className="download-btn">
+      <input type="file" accept=".docx" ref={fileInputRef} /></div>
+      <div className="merge-btn">
       <button onClick={handleFileChange} disabled={isLoading}>
         Convert to PDF
-      </button>
+      </button></div>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
       {isLoading && <p>Converting...</p>}
       {downloadUrl && (
         <div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument, rgb } from 'pdf-lib';
+import "./tools.css"
 
 function PdfPageOrganizer() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -51,7 +52,8 @@ function PdfPageOrganizer() {
 
   return (
     <div>
-      <h2>PDF Page Organizer</h2>
+      <h2 className='first-heading'>PDF Page Organizer</h2>
+      <p>Sort pages of your PDF file. </p>
       <input type="file" accept=".pdf" onChange={handleFileChange} />
       <input
         type="text"

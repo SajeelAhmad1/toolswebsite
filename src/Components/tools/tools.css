@@ -1,0 +1,102 @@
+.first-heading{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 15%;
+    text-align: center;
+}
+.body{
+    margin: auto;
+    padding: 50px;
+}
+.ad-area{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: 1px solid gray;
+    height: 100px;
+}
+.merge-btn{
+  background-color: chocolate;
+  color: #fff;
+  border-radius: 4px;
+  text-align: center;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 400;
+  width: 20%;
+  margin-left: 40%;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.merge-btn:hover{
+  background-color: rgb(104, 49, 9);
+}
+
+.download-btn{
+  display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 60px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #e5322d;
+    /* padding: 24px 56px; */
+    /* font-weight: 600; */
+    font-size: 15px;
+    line-height: 32px;
+    vertical-align: middle;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 12px;
+    -webkit-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition: all .1s linear;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,.14);
+    -ms-flex-order: 1;
+    order: 1;
+    /* max-width: 60vw; */
+    cursor: pointer;
+    text-align: center;
+    margin-left: 40%;
+    width: 20%;
+    
+}
+.download-btn:hover{
+  background-color: #000000;
+}
+
+
+
+  p{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 400;
+    margin-top: 2%;
+  }
+
+  @media (max-width: 776px) {
+    .download-btn, .merge-btn {
+        width: 100%;
+        margin: 0;
+        margin-top: 3%;
+        
+    }
+    .merge-btn{
+      padding-right:100px;
+    }
+    .download-btn{
+      padding-left:80px;
+    }
+}
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { degrees, PDFDocument, rgb } from 'pdf-lib';
+import "./tools.css"
 
 function PageNumberTool() {
   const fileInputRef = useRef(null);
@@ -68,7 +69,8 @@ function PageNumberTool() {
 
   return (
     <div>
-      <h2>Page Number Tool</h2>
+      <h2 className='first-heading'>Add Page Number </h2>
+      <p>Add page numbers to your PDF files with custom position & dimensions with in few seconds.</p>
       <input type="file" accept=".pdf" ref={fileInputRef} onChange={handleFileChange} />
       <input
         type="number"

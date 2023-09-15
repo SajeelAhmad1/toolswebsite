@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { degrees, PDFDocument, rgb, drawImage } from 'pdf-lib';
+import "./tools.css"
 
 function WatermarkPdfTool() {
   const fileInputRef = useRef(null);
@@ -93,7 +94,8 @@ function WatermarkPdfTool() {
 
   return (
     <div>
-      <h2>Watermark PDF Tool</h2>
+      <h2 className='first-heading'>Watermark PDF Tool</h2>
+      <p>Add watermark with stamp, image or text with custom position, typography and transparency.</p>
       <input type="file" accept=".pdf" ref={fileInputRef} onChange={handleFileChange} />
       <input type="file" accept=".png, .jpg, .jpeg" onChange={handleImageChange} />
       <input

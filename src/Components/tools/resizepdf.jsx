@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument } from 'pdf-lib';
+import "./tools.css"
 
 function PdfResizeTool() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -66,7 +67,8 @@ function PdfResizeTool() {
 
   return (
     <div>
-      <h2>PDF Resize Tool</h2>
+      <h2 className='first-heading'>PDF Resize Tool</h2>
+      <p></p>
       <input type="file" accept=".pdf" onChange={handleFileUpload} />
       <div>
         <label>New Page Width (points):</label>

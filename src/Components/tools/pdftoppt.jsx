@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
+import "./tools.css"
 
 function PdfToPowerpointConverter() {
   const fileInputRef = useRef(null);
@@ -58,15 +59,28 @@ function PdfToPowerpointConverter() {
   };
 
   return (
-    <div>
-      <h2>PDF to PowerPoint Converter</h2>
-      <input type="file" accept=".pdf" ref={fileInputRef} />
+    <div className='body'>
+      <h2 className='first-heading'>PDF to PowerPoint Converter</h2>
+      <p>Convert your PDFs file into PPT & PPTX Slideshows easily within few clicks.</p>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
+      <div className="download-btn">
+      <input type="file" accept=".pdf" ref={fileInputRef} /></div>
+      <div className="merge-btn">
       <button onClick={handleFileChange} disabled={isLoading}>
         Convert to PowerPoint
-      </button>
+      </button></div>
+      {/* ad area */}
+  <div className='ad-area'>
+
+</div>
+{/* ad area */}
       {isLoading && <p>Converting...</p>}
       {downloadUrl && (
-        <div>
+        <div className='merge-btn'>
           <button onClick={handleDownload}>Download PowerPoint File</button>
         </div>
       )}

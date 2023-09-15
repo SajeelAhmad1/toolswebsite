@@ -1,66 +1,95 @@
 import React, { useState } from 'react';
-import { PDFDocument, rgb } from 'pdf-lib';
+import * as pdfjs from 'pdfjs-dist';
+import 'pdfjs-dist/build/pdf.worker.entry';
+import * as diff from 'diff';
 
-function ProtectPdf() {
-  const [pdfFile, setPdfFile] = useState(null);
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [protectedPdf, setProtectedPdf] = useState(null);
+function ComparePdfFiles() {
+  const [pdfFile1, setPdfFile1] = useState(null);
+  const [pdfFile2, setPdfFile2] = useState(null);
+  const [differences, setDifferences] = useState([]);
 
-  const handleFileChange = (event) => {
-    setPdfFile(event.target.files[0]);
+  const handleFile1Change = (event) => {
+    const file = event.target.files[0];
+    setPdfFile1(file);
   };
 
-  const protectPdf = async () => {
-    if (!pdfFile || !password) {
-      alert('Please select a PDF file and enter a password.');
+  const handleFile2Change = (event) => {
+    const file = event.target.files[0];
+    setPdfFile2(file);
+  };
+
+  const comparePDFs = async () => {
+    if (!pdfFile1 || !pdfFile2) {
+      alert('Please select both PDF files.');
       return;
     }
 
-    setIsLoading(true);
-
     try {
-      const pdfBytes = await pdfFile.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(pdfBytes);
+      const pdfData1 = new Uint8Array(await pdfFile1.arrayBuffer());
+      const pdfData2 = new Uint8Array(await pdfFile2.arrayBuffer());
 
-      // Password protect the PDF
-      pdfDoc.setUserPassword(password);
+      pdfjs.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.js';
 
-      const protectedPdfBytes = await pdfDoc.save();
+      const pdf1 = await pdfjs.getDocument({ data: pdfData1 }).promise;
+      const pdf2 = await pdfjs.getDocument({ data: pdfData2 }).promise;
 
-      setProtectedPdf(new Blob([protectedPdfBytes], { type: 'application/pdf' }));
+      const text1 = await extractTextFromPDF(pdf1);
+      const text2 = await extractTextFromPDF(pdf2);
+
+      const differences = diff.diffLines(text1, text2);
+      setDifferences(differences);
     } catch (error) {
-      console.error('Error protecting PDF:', error);
+      console.error('Error comparing PDFs:', error);
+    }
+  };
+
+  const extractTextFromPDF = async (pdfDocument) => {
+    const numPages = pdfDocument.numPages;
+    let text = '';
+
+    for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+      const pdfPage = await pdfDocument.getPage(pageNum);
+      const textContent = await pdfPage.getTextContent();
+
+      textContent.items.forEach((item) => {
+        text += item.str + ' ';
+      });
     }
 
-    setIsLoading(false);
+    return text;
   };
 
   return (
     <div>
-      <h2>Protect PDF</h2>
-      <input type="file" accept=".pdf" onChange={handleFileChange} />
+      <h2>Compare PDF Files</h2>
       <div>
-        <label>Password: </label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <label>Select PDF File 1:</label>
+        <input type="file" accept=".pdf" onChange={handleFile1Change} />
       </div>
-      <button onClick={protectPdf}>Protect PDF</button>
-      {isLoading && <p>Protecting...</p>}
-      {protectedPdf && (
+      <div>
+        <label>Select PDF File 2:</label>
+        <input type="file" accept=".pdf" onChange={handleFile2Change} />
+      </div>
+      <button onClick={comparePDFs}>Compare PDFs</button>
+      {differences.length > 0 && (
         <div>
-          <h3>Protected PDF:</h3>
-          <a
-            href={URL.createObjectURL(protectedPdf)}
-            download="protected_pdf.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download Protected PDF
-          </a>
+          <h3>Differences:</h3>
+          <pre>
+            {differences.map((part, index) => (
+              <span
+                key={index}
+                style={{
+                  backgroundColor: part.added ? 'green' : part.removed ? 'red' : 'white',
+                }}
+              >
+                {part.value}
+              </span>
+            ))}
+          </pre>
         </div>
       )}
     </div>
   );
 }
 
-export default ProtectPdf;
+export default ComparePdfFiles;

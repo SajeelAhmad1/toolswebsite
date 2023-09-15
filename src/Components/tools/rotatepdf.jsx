@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument, degrees } from 'pdf-lib';
+import "./tools.css"
 
 function RotatePdfTool() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -52,7 +53,8 @@ function RotatePdfTool() {
 
   return (
     <div>
-      <h2>Rotate PDF Tool</h2>
+      <h2 className='first-heading'>Rotate PDF Tool</h2>
+      <p>Rotate one or all pages in your PDFs the way you need them. You can even rotate multiple PDFs file at a time.</p>
       <input type="file" accept=".pdf" onChange={handleFileChange} />
       <label>
         Rotation Angle:

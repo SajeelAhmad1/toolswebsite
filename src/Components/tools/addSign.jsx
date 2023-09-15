@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { PDFDocument, rgb } from 'pdf-lib';
+import "./tools.css"
 
 const fontOptions = [
   'Helvetica',
@@ -171,7 +172,8 @@ function PdfSignatureTool() {
 
   return (
     <div>
-      <h1>PDF Signature Tool</h1>
+      <h1 className='first-heading'>PDF Signature Tool</h1>
+      <p>Add eSign in a PDF document with custom sign, stamp, date and name or request electronic signature from others.</p>
 
       <div>
         <label>Select a PDF file:</label>
